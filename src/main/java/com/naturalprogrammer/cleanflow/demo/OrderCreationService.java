@@ -65,8 +65,8 @@ public class OrderCreationService {
         return shippable;
     }
 
-    private String customerHasAnActiveCreditCard(Customer customer) {
-        String hasCreditCard = random.nextBoolean() ? "YES" : "NO";
+    private boolean customerHasAnActiveCreditCard(Customer customer) {
+        boolean hasCreditCard = random.nextBoolean();
         log.info("Customer has active credit card: {}", hasCreditCard);
         return hasCreditCard;
     }
