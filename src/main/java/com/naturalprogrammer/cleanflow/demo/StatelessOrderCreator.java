@@ -2,6 +2,10 @@ package com.naturalprogrammer.cleanflow.demo;
 
 import com.naturalprogrammer.cleanflow.CleanFlow;
 import com.naturalprogrammer.cleanflow.Returns;
+import com.naturalprogrammer.cleanflow.demo.models.Customer;
+import com.naturalprogrammer.cleanflow.demo.models.OrderCreationForm;
+import com.naturalprogrammer.cleanflow.demo.models.OrderResource;
+import com.naturalprogrammer.cleanflow.demo.models.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,9 +13,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class OrderCreationService {
+public class StatelessOrderCreator {
 
-    private static final Logger log = LoggerFactory.getLogger(OrderCreationService.class);
+    private static final Logger log = LoggerFactory.getLogger(StatelessOrderCreator.class);
+
+    public static void main(String[] args) {
+
+        OrderCreationForm form = new OrderCreationForm();
+        form.productId = 56;
+
+        new StatelessOrderCreator().createOrder(form);
+    }
+
+    private Customer getCurrentlyLoggedInCustomer() {
+
+        Customer customer = new Customer();
+        customer.id = 34;
+        log.info("Logged in customer: {} ", customer);
+
+        return customer;
+    }
 
     public OrderResource createOrder(OrderCreationForm orderCreationForm) {
 
@@ -39,22 +60,6 @@ public class OrderCreationService {
         Product product = getProductById(orderCreationForm.productId);
 
         return List.of(customer, product);
-    }
-
-    private Customer getCurrentlyLoggedInCustomer() {
-
-        Customer customer = new Customer();
-        customer.id = 34;
-        log.info("Logged in customer: {} ", customer);
-
-        return customer;
-    }
-
-    private Product getProductById(Integer productId) {
-
-        Product product = new Product();
-        product.id = productId;
-        return product;
     }
 
     private Random random = new Random();
@@ -117,61 +122,11 @@ public class OrderCreationService {
         log.error("Error: {}", message);
     }
 
-    public static void main(String[] args) {
+    private Product getProductById(Integer productId) {
 
-        OrderCreationForm form = new OrderCreationForm();
-        form.productId = 56;
-
-        new OrderCreationService().createOrder(form);
+        Product product = new Product();
+        product.id = productId;
+        return product;
     }
 }
 
-class OrderCreationForm {
-
-    public Integer productId;
-
-    @Override
-    public String toString() {
-        return "OrderCreationForm{" +
-                "productId=" + productId +
-                '}';
-    }
-}
-
-class OrderResource {
-
-    public Integer customerId;
-    public Integer productId;
-
-    @Override
-    public String toString() {
-        return "OrderResource{" +
-                "customerId=" + customerId +
-                ", productId=" + productId +
-                '}';
-    }
-}
-
-class Product {
-
-    public Integer id;
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                '}';
-    }
-}
-
-class Customer {
-
-    public Integer id;
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                '}';
-    }
-}
