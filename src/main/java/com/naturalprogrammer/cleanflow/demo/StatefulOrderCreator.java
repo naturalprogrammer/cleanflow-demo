@@ -1,7 +1,6 @@
 package com.naturalprogrammer.cleanflow.demo;
 
 import com.naturalprogrammer.cleanflow.CleanFlow;
-import com.naturalprogrammer.cleanflow.Returns;
 import com.naturalprogrammer.cleanflow.demo.models.Customer;
 import com.naturalprogrammer.cleanflow.demo.models.OrderCreationForm;
 import com.naturalprogrammer.cleanflow.demo.models.OrderResource;
@@ -9,8 +8,6 @@ import com.naturalprogrammer.cleanflow.demo.models.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class StatefulOrderCreator {

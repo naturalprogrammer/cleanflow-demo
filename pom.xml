@@ -6,7 +6,7 @@
 
     <groupId>com.naturalprogrammer.cleanflow</groupId>
     <artifactId>cleanflow-demo</artifactId>
-    <version>1.4.0</version>
+    <version>1.5.4</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,19 +19,19 @@
         <dependency>
             <groupId>com.naturalprogrammer.cleanflow</groupId>
             <artifactId>cleanflow</artifactId>
-            <version>1.4.0</version>
+            <version>1.5.4</version>
         </dependency>
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-            <version>1.2.7</version>
+            <version>1.2.11</version>
         </dependency>
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.7</version>
+            <version>1.2.11</version>
         </dependency>
 
     </dependencies>
